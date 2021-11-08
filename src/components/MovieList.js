@@ -8,7 +8,7 @@ const MovieList = (props) => {
   return (
     <>
       {subset.map((movie, index) =>
-        <div className="image__container" key={movie.imdbID}>
+        <div className="image__container" key={index}>
           <img className="image__img" src={movie.Poster} alt="Movie Poster" />
           <div className="image__overlay">
             <span id="image__title">{movie.Title}</span>
@@ -18,7 +18,7 @@ const MovieList = (props) => {
             </div>
           </div>
         </div>
-      )};
+      )}
     </>
   )
 
