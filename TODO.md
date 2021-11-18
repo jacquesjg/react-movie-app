@@ -10,3 +10,12 @@ X 8. If there’s no such movie it should let user know movie doesn't exist.
 pt2 9. Install react-router-dom 10. Create MainMovie Component 11. Setup Router in App.js 12. Pull all the Movie data in MainMovie Component 5. After all the names are shown on screen make sure you use the Link 6. Create MainMovieDetail and use this.props.match.params to fetch detail of selected Movie.
 
 9. Upload to Github and post link in 203 version \*
+   //
+
+abcdefghijkl
+
+Weakness Key List:
+n - bananas i found my first weakness key
+m - mk
+
+00-0-00dpp=-pl0lk0l0pkl0l0-

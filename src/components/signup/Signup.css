@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:800|Open+Sans:600,800');
+
+
+.center-div
+{
+  margin-top: 40px;
+  width: 360px;
+  height: 550px;
+  background-color:#ffffff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+  
+}
+
+.center-div-container{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-div-signin
+{
+  margin-top: 40px;
+  width: 360px;
+  height: 300px;
+  background-color:#ffffff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+  
+}
+
+.login-wrapper {
+  width: 300px;
+  height: 330px;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+
+.Signin__title__text {
+  font-weight: 800;
+  font-size: 1.2em;
+  color: #ff7227;
+  padding-bottom:  30px;
+  text-align: center;
+  height: 20px;
+}
+
+input {
+  background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #54555a;
+    font-size: 0.8em;
+    font-weight: 400;
+    line-height: 22px;
+    height: 50px;
+    width: 100%;
+    padding: 0px 10px;
+    -webkit-transition: border 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s;
+}
+
+#root > div > div.center-div > div > form > div{
+  height: 20px;
+  color: #ff7227;
+  font-size: smaller;
+  margin-left: 5px;
+  padding-top: 2px;
+}
+
+#sign__button  {
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  color: white;
+  background-color: #69D2E7;
+  font-size: 0.8em;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) ;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+
+input::placeholder {
+   color:  #a5a6ac;
+}
+
+input:focus {
+  border: 1px solid #ff7227;
+  outline: none;
+}
+
+#sign__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+p {
+  font-size: 12px;
+}
+
+#signup-link {
+  color: blue; 
+}
+

@@ -1,17 +1,19 @@
 .image__container {
   position: relative;
-  width: 180px;
   border: solid 1px black;
   border-radius: 6px;
-
+  overflow: hidden;
+  height: 292.5px;
+  width: 195px;
 }
 
 .image__img{
   display: block;
- width: 100%;
  border-radius: 6px;
-
+ width: 100%;
+ height: 100%;
 }
+
 
 .image__overlay {
   position: absolute;
@@ -51,15 +53,23 @@ backdrop-filter: blur(3px);
   
 }
 
+#error {
+  position: fixed;
+  top: 125px;
+  margin-right: 0px !important;
+}
+
 #rating__container {
   display: flex;
   flex-direction: row;
-  justify-items: flex-end;
+  align-items: center;
 }
 
 .rating__star{
   width: 15px;
   height: 15px;
+  margin-top: 15px;
+  margin-right: 3px;
 }
 
 #image__rating {
@@ -68,3 +78,21 @@ backdrop-filter: blur(3px);
 
 /* 
 border-radius: .2em; */
+
+.Movie__List {
+  height: min-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 0px;
+  position: fixed;
+  top: 170px;
+}
+
+#root > div > div:nth-child(2) {
+  margin-bottom: 0px;
+}
+
+#root {
+  margin-bottom: 0px;
+}

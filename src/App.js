@@ -1,80 +1,60 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import MovieList from './components/MovieList';
-import Search from './components/Search'
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MovieList from './components/movieList/MovieList';
+import MovieDetail from './components/movieDetail/MovieDetail';
+import Header from './components/header/Header';
+import Signup from './components/signup/Signup';
+import Signin from './components/signin/Signin';
+import Logout from './components/logout/Logout';
+import { ToastContainer } from 'react-toastify';
+import jwt_decode from "jwt-decode";
+import 'react-toastify/dist/ReactToastify.css';
+
 import './App.css';
+require("dotenv").config();
 
-export class App extends Component {
-  state = {
+function App() {
+  const [user, setUser] = useState(null);
 
-    moviesArray: [],
-    message: ""
 
-  };
+  useEffect(() => {
 
-  fetchMovieData = async (movie) => {
+    let jwtToken = window.localStorage.getItem("jwtToken")
+    if (jwtToken) {
+      let decodedToken = jwt_decode(jwtToken);
+      const currentTime = Date.now() / 1000;
 
-    this.setState({
-      message: ""
-    })
-    const result = await axios.get(`http://www.omdbapi.com/?s=${movie}&apikey=24537003&`);
-    const randomMovies = result.data.Search
-    if (randomMovies === undefined) {
-      this.setState({
-        message: "Movie Not Found"
-      })
-    } else {
-      const moviesWithRating = await Promise.all(randomMovies.map(async (movie) => {
-        const result = await axios.get(`http://omdbapi.com/?i=${movie.imdbID}&apikey=24537003&`);
-        movie.rating = result.data.imdbRating;
-        return movie;
-      }));
-      this.setState({
-        moviesArray: moviesWithRating
-      });
-    };
-  };
-
-  async componentDidMount() {
-    try {
-      const franchiseArray = [
-        "Superman",
-        "Lord of the Rings",
-        "Batman",
-        "Pokemon",
-        "Harry Potter",
-        "Star Wars",
-        "Avengers",
-        "Terminator"
-      ]
-      // get random franchise
-      const franchise = franchiseArray[Math.floor(Math.random() * franchiseArray.length)];
-
-      // fetch movie data
-      this.fetchMovieData(franchise);
-
-    } catch (e) {
-      console.log(e);
+      if (decodedToken.exp < currentTime) {
+        window.localStorage.removeItem("jwtToken");
+        setUser(null);
+      } else {
+        setUser({
+          email: decodedToken.email,
+          username: decodedToken.username,
+          name: decodedToken.name
+        })
+      }
     }
-  };
+  }, []);
 
 
-  render() {
-    return (
-      <div className="App">
 
-        <Search fetchMovieData={this.fetchMovieData} message={this.state.message} />
-        <br />
-        <br />
+  return (
+    <div className='App'>
+      <ToastContainer theme="colored" />
+      < Router >
+        <Header user={user} />
+        <Routes>
+          <Route exact path="/fetch-movie/:imdbID" element={<MovieDetail />} />
+          <Route exact path="/" element={<MovieList />} />
+          <Route exact path="/sign-up" element={<Signup />} />
+          <Route exact path="/sign-in" element={<Signin setUser={setUser} />} />
+          <Route exact path="/logout" element={<Logout setUser={setUser} />} />
+        </Routes>
+      </Router >
 
-        <div className="Movie__List">
-          <MovieList movies={this.state.moviesArray} />
-        </div>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App
-
-

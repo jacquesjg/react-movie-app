@@ -1,0 +1,46 @@
+.data__container{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  font-size: smaller;
+}
+
+.poster__and__data__container {
+  margin-top: 20px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+#poster{
+  width: 400px;
+  height: 600px;
+  margin-right: 20px;
+}
+
+h4 {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  color: goldenrod;
+}
+
+
+#fave__button  {
+  height: 50px;
+  width: 200px;
+  margin-top: 595px;
+  color: white;
+  background-color: #69D2E7;
+  font-size: 0.8em;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) ;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+#fave__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
