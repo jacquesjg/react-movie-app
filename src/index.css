@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 code {
@@ -16,6 +17,8 @@ body,html {
   margin: 0;
   padding: 0;
   background-color: #13171a;;
+  
+
 }
 * {
   box-sizing: border-box;

@@ -5,7 +5,7 @@ import './MovieDetail.css';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-function MovieDetail() {
+function MovieDetail({ user }) {
   const navigate = useNavigate();
   const { imdbID } = useParams();
 
@@ -62,36 +62,50 @@ function MovieDetail() {
 
   async function handleFavoriteClick(e) {
     try {
-      let jwtToken = window.localStorage.getItem("jwtToken");
-      // set up jwtoken for post
-      const config = {
-        headers: { Authorization: `Bearer ${jwtToken}` }
-      };
 
-      const payload = await axios.post("http://localhost:3001/api/movies/add-to-favorites", {
-        title: title,
-        poster: poster,
-        imdbLink: url,
-      }, config)
+      if (!user) {
+        toast.success(`Please Sign in to Add Favorites`, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
-      toast.success(`${title} has been successfully added to Favorites`, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      } else {
+        let jwtToken = window.localStorage.getItem("jwtToken");
+        // set up jwtoken for post
+        const config = {
+          headers: { Authorization: `Bearer ${jwtToken}` }
+        };
 
-      const delay = ms => new Promise(res => setTimeout(res, ms));
+        const payload = await axios.post("http://localhost:3001/api/movies/add-to-favorites", {
+          title: title,
+          poster: poster,
+          imdbLink: url,
+        }, config)
 
-      const delayNavigate = async () => {
-        await delay(3200);
-        navigate("/");
-      };
+        toast.success(`${title} has been successfully added to Favorites`, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
-      delayNavigate();
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        const delayNavigate = async () => {
+          await delay(3200);
+          navigate("/");
+        };
+
+        delayNavigate();
+      }
 
     } catch (e) {
       toast.error(e.response.data.error, {
@@ -107,7 +121,6 @@ function MovieDetail() {
   };
 
   return (
-
     <>
       <div className="poster__and__data__container">
         <img id="poster" src={poster} alt="Movie Poster" />
@@ -128,7 +141,7 @@ function MovieDetail() {
           <h4>Box Office:</h4> {boxOffice}
         </div>
       </div>
-      <button id="fave__button" onClick={handleFavoriteClick}>Add To Favorites</button>
+      <button id="fave__button" onClick={handleFavoriteClick}> {user ? "Add To Favorites" : "Sign in to add Favorites"}</button>
 
     </>
   )

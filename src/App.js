@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Signup from './components/signup/Signup';
 import Signin from './components/signin/Signin';
 import Logout from './components/logout/Logout';
+import Favorites from './components/favorites/Favorites';
 import { ToastContainer } from 'react-toastify';
 import jwt_decode from "jwt-decode";
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,11 +46,12 @@ function App() {
       < Router >
         <Header user={user} />
         <Routes>
-          <Route exact path="/fetch-movie/:imdbID" element={<MovieDetail />} />
+          <Route exact path="/fetch-movie/:imdbID" element={<MovieDetail user={user} />} />
           <Route exact path="/" element={<MovieList />} />
           <Route exact path="/sign-up" element={<Signup />} />
           <Route exact path="/sign-in" element={<Signin setUser={setUser} />} />
           <Route exact path="/logout" element={<Logout setUser={setUser} />} />
+          <Route exact path="/get-all-favorites" element={<Favorites />} />
         </Routes>
       </Router >
 

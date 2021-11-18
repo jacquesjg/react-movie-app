@@ -6,9 +6,13 @@ import UsernameHooks from "../../components/hooks/UsernameHooks";
 import EmailHooks from "../../components/hooks/EmailHooks";
 import PasswordHooks from "../../components/hooks/PasswordHooks";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Signup() {
+  const navigate = useNavigate();
+
+
   const [firstName, handleFirstNameChange, firstNameError, setOnFocusFirstName, setOnBlurFirstName] = FirstNameHooks();
 
   const [lastName, handleLastNameChange, lastNameError, setOnFocus, setOnBlur] = LastNameHooks();
@@ -33,7 +37,7 @@ export default function Signup() {
       });
 
       toast.success("Account Created. Please Sign in.", {
-        position: "center",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -43,6 +47,7 @@ export default function Signup() {
       });
 
       e.target.reset();
+      navigate("/sign-in");
 
     } catch (e) {
       toast.error(e.response.data, {

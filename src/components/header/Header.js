@@ -6,7 +6,7 @@ import logo from './HeaderImages/logo.png'
 export default function Header({ user }) {
 
 
-  let link1 = user ? "#" : "/sign-up";
+  let link1 = user ? "/profile" : "/sign-up";
   let link2 = user ? "/logout" : "sign-in";
   let link2Text = user ? "Logout" : "Login";
 
@@ -26,9 +26,9 @@ export default function Header({ user }) {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          {user ? <li>
             <Link to="/get-all-favorites">Favorites</Link>
-          </li>
+          </li> : null}
           <li>
             <Link to={link2}>{link2Text}</Link>
           </li>
